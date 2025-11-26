@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>THUMMARAPALLY SRAVAN— AI/ML & Full Stack Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg-start: #FAF9F6;
+    --bg-end: #FFFDF9;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text: #5D4037;
+    --muted: #8D6E63;
+    --accent: #FF6B6B;
+    --accent-soft: #FF8A80;
+    --shadow: 0 6px 18px rgba(93, 64, 55, 0.18);
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', system-ui, Arial, sans-serif;
+    margin: 0; padding: 0;
+    background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+    color: var(--text);
+    font-size: 14px;
+    scroll-behavior: smooth;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: linear-gradient(90deg, rgba(250,249,246,0.95), rgba(255,253,249,0.95));
+    border-bottom: 1px solid rgba(93,64,55,0.12);
+    display: flex; justify-content: center; padding: 10px 16px;
+    backdrop-filter: blur(6px);
+  }
+  .nav-inner {
+  display: flex;
+  justify-content: space-between; /* Brand left, menu right */
+  align-items: center;            /* Vertically center both */
+  padding: 18px 28px;
+  background: #faf9f6;
+  border-bottom: 1px solid #eae7e1;
+}
+
+.brand-text {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: #5d4037;
+  font-weight: bold;
+}
+
+.brand-text span {
+  font-size: 14px;
+  color: #8d6e63;
+  margin-left: 8px;
+  font-weight: normal;
+}
+
+.menu {
+  display: flex;
+  gap: 32px;
+}
+
+.menu a {
+  font-size: 16px;
+  color: #5d4037;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.menu a:hover {
+  color: #ff6b6b;
+}
+
+  .menu .cta {
+    background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+    color: white;
+    box-shadow: var(--shadow);
+  }
+  main {
+    max-width: 960px;
+    margin: 32px auto 48px;
+    padding: 0 16px;
+  }
+  section {
+    margin-bottom: 48px;
+  }
+  h1, h2, h3 {
+    margin-top: 0;
+    color: var(--text);
+  }
+  h1 {
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+  h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  p, li {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  ul {
+    padding-left: 20px;
+  }
+  .card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  margin-bottom: 32px;
+}
+
+#projects {
+  padding: 20px ;
+}
+
+#projects h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #5d4037;
+}
+
+.card h3 {
+  font-size: 1.3 rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #44302b;
+}
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+  .hero-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.15);
+  }
+  .badges {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: #fff;
+    color: var(--muted);
+    border-radius: 9999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(93,64,55,0.12);
+    user-select: none;
+  }
+  .btn-group {
+    margin-top: 20px;
+  }
+  .btn, .btn-primary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    border: 1px solid rgba(93,64,55,0.18);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    user-select: none;
+  }
+  .btn {
+    background: #FFFDF9;
+    color: var(--text);
+    margin-left: 8px;
+  }
+  .btn-primary {
+    background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+    color: white;
+    border: none;
+  }
+  form {
+    margin-top: 12px;
+  }
+  input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom:12px;
+    border-radius: 8px;
+    border: 1px solid rgba(93,64,55,0.2);
+    font-size: 14px;
+    color: var(--text);
+    font-family: 'Inter', system-ui, Arial, sans-serif;
+  }
+  button[type="submit"] {
+    background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+    border: none;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 12px 0;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+  }
+  button[type="submit"]:hover {
+    opacity: 0.9;
+  }
+  @media (max-width: 720px) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
+    nav .menu {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand-text">
+      <strong>THUMMARAPALLY SRAVAN</strong>
+      
+    </div>
+    <div class="menu">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#experience">EXPERIENCE</a>
+      <a href="#certifications">CERTIFICATION</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </div>
+</header>
+
+
+
+<main>
+
+  <!-- Home Section -->
+  <section id="home" class="grid-2">
+    <div class="card">
+      <h1>FULL STACK DEVELOPER</h1>
+      <p>Welcome! I am an AI/ML developer and full stack Developer passionate about building scalable web applications and production-ready machine learning systems.</p>
+      <p>I combine strong expertise in Python, React, Node.js, and data engineering to solve challenging problems efficiently.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn-primary btn">View Projects</a>
+        
+      </div>
+      <div class="badges" aria-label="Key skills and highlights">
+        <span class="badge">4+ Internships</span>
+        <span class="badge">Multimodal Biometrics</span>
+        <span class="badge">Hashgraph Developer</span>
+      </div>
+    </div>
+    <aside class="card" style="text-align:center;">
+      <img src="my profile.jpg" alt="Thummarapally Sravan" class="hero-img" onerror="this.onerror=null;this.src='https://via.placeholder.com/160.png?text=Upload+Photo';" />
+      <p><strong>Thummarapally Sravan</strong></p>
+      <p>B.Tech CSE (AI & ML)<br />Vaagdevi College of Engineering</p>
+      <p>Email: <a href="mailto:thummarapallysravan@gmail.com">thummarapallysravan@gmail.com</a></p>
+      <p>
+        <a href="https://github.com/THUMMARAPALLYSRAVAN" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+        <a href="http://www.linkedin.com/in/thummarapally-sravan-4a7353296" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </aside>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="card">
+    <h2>ABOUT ME</h2>
+    <p>I am a dedicated Computer Science graduate specializing in AI and ML, with hands-on experience gained through multiple internships focused on data workflows, deep learning, and full-stack development.</p>
+    <p>I enjoy building practical solutions by integrating machine learning models with scalable web applications in agile team environments.</p>
+  </section>
+
+  <!-- Projects Section -->
+ <section id="projects" class="card">
+                     <h2>PROJECTS</h2>
+
+  <div class="card">
+    <h3>Multimodal Biometric Recognition System</h3>
+   
+    <p>
+      Implemented a biometric system combining Iris, Face, and Finger Vein features, improving authentication performance significantly.
+    </p>
+  
+    <h3>AI Voice Assistant</h3>
+    
+    <p>
+      Built a voice-controlled assistant prototype integrating speech-to-text and text-to-speech to automate tasks efficiently.
+    </p>
+  </div>
+</section>
+
+
+  <!-- Skills Section -->
+  <section id="skills" class="grid-2">
+    <div class="card">
+      <h2>LANGUAGES & FRAMEWORKS</h2>
+      <ul>
+        <li>Python (ML, data processing, scripting)</li>
+        <li>JavaScript, ReactJS</li>
+        <li>Node.js, Express</li>
+        <li>SQL, MongoDB</li>
+      </ul>
+      <h2>AI / ML & DATA SKILLS</h2>
+      <ul>
+        <li>Deep Learning (vision, NLP basics)</li>
+        <li>Data preprocessing and cleaning</li>
+        <li>Model training, evaluation, deployment basics</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>TOOLS & CONCEPTS</h2>
+      <ul>
+        <li>Git & GitHub version control</li>
+        <li>Cloud APIs and basic deployment (AWS, Azure)</li>
+        <li>Jupyter Notebooks, VS Code</li>
+        <li>Agile teamwork & documentation</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="card">
+    <h2>EXPERIENCE</h2>
+    <ul>
+      <li><strong>Data Manager — Paxel Technologies (Remote)</strong> (Oct 2024 – Dec 2024)<br />
+        Managed data workflows ensuring 99.9% quality; tracked and resolved errors; supported backend data validation & reporting.</li>
+      <li><strong>Intern — Manac Infotech Pvt Ltd</strong> (Mar 2025 – Apr 2025)<br />
+        Developed deep learning multimodal biometric system fusing Iris, Face & Finger Vein data; improved authentication accuracy.</li>
+      <li><strong>Intern — Google for Developers (Eduskills) (Remote)</strong> (Jul 2025 – Sep 2025)<br />
+        Delivered web/cloud projects under mentorship; collaborated in agile teams; enhanced delivery efficiency and code quality.</li>
+      <li><strong>Content Writer — Marpu Foundation (Remote)</strong> (Jul 2025 – Aug 2025)<br />
+        Created SEO-optimized content and case studies; increased organic reach with clear, effective writing.</li>
+      <li><strong>Achievements:</strong><br />
+        Best Business Model Canvas Award — EDC Workshop<br />
+        Certificate of Participation — AI-Verse 3.0</li>
+    </ul>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="card">
+    <h2>CERTIFICATION</h2>
+    <ul>
+      <li>Python — Certificate</li>
+      <li>JavaScript — Certificate</li>
+      <li>React (Basic) — Certificate</li>
+      <li>Hashgraph Developer Course</li>
+      <li>Gen AI Tools Workshop</li>
+      <li>AI-Verse 3.0 (Participation)</li>
+      <li>Best Business Model Canvas — EDC</li>
+      <li>HackerRank Profile — Achievements</li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="grid-2">
+    <div class="card">
+      <h2>CONTACT ME</h2>
+      <p>If you're interested in collaboration, internships, or job opportunities, please feel free to connect!</p>
+      <p><strong>Email:</strong> <a href="mailto:thummarapallysravan@gmail.com">thummarapallysravan@gmail.com</a></p>
+      <p><strong>Phone:</strong> +91 6309722301</p>
+      <p><strong>LinkedIn:</strong> <a href="http://www.linkedin.com/in/thummarapally-sravan-4a7353296" target="_blank" rel="noopener noreferrer">View Profile</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/THUMMARAPALLYSRAVAN" target="_blank" rel="noopener noreferrer">THUMMARAPALLYSRAVAN</a></p>
+    </div>
+    <div class="card">
+      <h3>SEND ME A MESSAGE</h3>
+      <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! This is a demo form.');">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="message" rows="4" placeholder="Your message here..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 THUMMARAPALLY SRAVAN — AI/ML & Full Stack Developer
+</footer>
+
+</body>
+</html>
